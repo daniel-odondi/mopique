@@ -5,39 +5,48 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Heart } from 'lucide-react';
+import { useCartStore } from '@/store/useCartStore';
+import { showSuccess } from '@/utils/toast';
 
 const FEATURED_PRODUCTS = [
   {
     id: '1',
     name: 'Velvet Tufted Sofa',
-    price: '125,000',
+    price: 125000,
     category: 'Living Room',
     image: 'https://images.unsplash.com/photo-1550254478-ead40cc54513?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '2',
     name: 'Oak Dining Table',
-    price: '85,000',
+    price: 85000,
     category: 'Dining',
     image: 'https://images.unsplash.com/photo-1530018607912-eff2df114f11?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '3',
     name: 'Mid-Century Armchair',
-    price: '42,000',
+    price: 42000,
     category: 'Living Room',
     image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '4',
     name: 'Minimalist Bed Frame',
-    price: '95,000',
+    price: 95000,
     category: 'Bedroom',
     image: 'https://images.unsplash.com/photo-1505693419148-403bb79a9ff1?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 
 const FeaturedProducts = () => {
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = (product: typeof FEATURED_PRODUCTS[0]) => {
+    addItem(product);
+    showSuccess(`${product.name} added to cart!`);
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -73,7 +82,10 @@ const FeaturedProducts = () => {
                   </button>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <Button className="w-full bg-slate-900 hover:bg-amber-600 text-white rounded-none">
+                  <Button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full bg-slate-900 hover:bg-amber-600 text-white rounded-none"
+                  >
                     <ShoppingCart size={18} className="mr-2" /> Add to Cart
                   </Button>
                 </div>
@@ -83,7 +95,7 @@ const FeaturedProducts = () => {
                 <h3 className="font-serif font-bold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">
                   <Link to={`/product/${product.id}`}>{product.name}</Link>
                 </h3>
-                <p className="text-amber-700 font-medium">Ksh {product.price}</p>
+                <p className="text-amber-700 font-medium">Ksh {product.price.toLocaleString()}</p>
               </div>
             </motion.div>
           ))}
