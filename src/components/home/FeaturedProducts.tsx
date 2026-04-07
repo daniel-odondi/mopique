@@ -7,42 +7,12 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart, Heart } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { showSuccess } from '@/utils/toast';
-
-const FEATURED_PRODUCTS = [
-  {
-    id: '1',
-    name: 'Velvet Tufted Sofa',
-    price: 125000,
-    category: 'Living Room',
-    image: 'https://images.unsplash.com/photo-1550254478-ead40cc54513?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    id: '2',
-    name: 'Oak Dining Table',
-    price: 85000,
-    category: 'Dining',
-    image: 'https://images.unsplash.com/photo-1530018607912-eff2df114f11?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    id: '3',
-    name: 'Mid-Century Armchair',
-    price: 42000,
-    category: 'Living Room',
-    image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    id: '4',
-    name: 'Minimalist Bed Frame',
-    price: 95000,
-    category: 'Bedroom',
-    image: 'https://images.unsplash.com/photo-1505693419148-403bb79a9ff1?q=80&w=1000&auto=format&fit=crop',
-  },
-];
+import { PRODUCTS } from '@/data/products';
 
 const FeaturedProducts = () => {
   const addItem = useCartStore((state) => state.addItem);
 
-  const handleAddToCart = (product: typeof FEATURED_PRODUCTS[0]) => {
+  const handleAddToCart = (product: typeof PRODUCTS[0]) => {
     addItem(product);
     showSuccess(`${product.name} added to cart!`);
   };
@@ -61,7 +31,7 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {FEATURED_PRODUCTS.map((product, index) => (
+          {PRODUCTS.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}

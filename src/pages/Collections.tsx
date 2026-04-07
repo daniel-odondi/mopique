@@ -6,10 +6,10 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Link } from 'react-router-dom';
 
 const COLLECTIONS = [
-  { name: 'Living Room', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop' },
-  { name: 'Bedroom', image: 'https://images.unsplash.com/photo-1505693419148-403bb79a9ff1?q=80&w=1000&auto=format&fit=crop' },
-  { name: 'Dining', image: 'https://images.unsplash.com/photo-1530018607912-eff2df114f11?q=80&w=1000&auto=format&fit=crop' },
-  { name: 'Office', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1000&auto=format&fit=crop' },
+  { name: 'Living Room', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop' },
+  { name: 'Bedroom', image: 'https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=2070&auto=format&fit=crop' },
+  { name: 'Dining', image: 'https://images.unsplash.com/photo-1617806118233-18e1674745be?q=80&w=2070&auto=format&fit=crop' },
+  { name: 'Office', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop' },
 ];
 
 const Collections = () => {
